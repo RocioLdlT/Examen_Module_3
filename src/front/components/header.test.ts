@@ -1,9 +1,16 @@
+import { createHeader } from "./header";
+
 describe('Given createHeader function', () => {
     afterEach(() => {
         document.body.innerHTML = '';
     });
     describe('When createHeader is called', () => {
-        test('Then the title "Productos" is in the document', () => {});
+        beforeEach(() => {
+            createHeader();
+        });
+        test('Then the title "Productos" is in the document', () => {
+            
+        });
 
         test('Then the logo is in the document', () => {});
     });
