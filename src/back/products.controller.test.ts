@@ -42,8 +42,49 @@ describe('Given an instantiated ProductsController', () => {
         });
     });
     });
-    describe('', () => {
-        test('', () => {});
+        describe('When method getAll is called', () => {
+        describe('And repo returns valid data', () => {
+            test('Then it should call json with a list of products', async () => {
+                // Arrange
+                const mockProducts = [{ id: '1', name: 'Product 1' }];
+                
+                mockRepo.read = vi.fn().mockResolvedValueOnce(mockProducts);
+
+                // Act
+                await controller.getAll(req, res, next);
+
+                // Assert
+            
+                expect(mockRepo.read).toHaveBeenCalled();
+                // objectContaining verifica que el objeto contiene AL MENOS estas propiedades
+                expect(res.json).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        results: mockProducts,
+                        error: '',
+                    }),
+                );
+                expect(next).not.toHaveBeenCalled();
+            });
+        });
+        describe('And repo throws an Error', () => {
+            test('Then it should call next with the error', async () => {
+                // Arrange
+                
+                mockRepo.read = vi
+                    .fn()
+                    .mockRejectedValueOnce(
+                        new Error('Failed to fetch products'),
+                    );
+
+                // Act
+                await controller.getAll(req, res, next);
+
+                // Assert
+                expect(next).toHaveBeenCalledWith(
+                    expect.objectContaining({} as Error),
+                );
+            });
+        });
     });
     describe('', () => {
         test('', () => {});
@@ -54,4 +95,3 @@ describe('Given an instantiated ProductsController', () => {
     describe('', () => {
         test('', () => {});
     });
-});
