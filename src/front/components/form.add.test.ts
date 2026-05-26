@@ -6,17 +6,21 @@ describe('Given createFormAdd function', () => {
         document.body.innerHTML = '';
     });
 
-    describe('', () => {
+    describe('When createFormAdd is called ', () => {
         //Arrange
         beforeEach(() => {
             createFormAdd();
         });
 
-        test('', () => {
+        test('Then the form is in the document', () => {
+            //Act
+            //Assert
            
         });
 
-        test('', () => {
+        test('Then the form can be filled and submitted', () => {
+            //Act
+            //Assert
 
         });
     });
