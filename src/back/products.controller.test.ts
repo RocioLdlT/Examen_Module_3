@@ -26,15 +26,21 @@ describe('Given an instantiated ProductsController', () => {
         } as unknown as Response;
 
         next = vi.fn() as NextFunction;
-        // Instancia controller mockeado
+        // Instancia controller mockeado abajo
         controller = new ProductsController(mockRepo);
     });
 
     afterEach(() => {
         vi.clearAllMocks();
     });
-    describe('', () => {
-        test('', () => {});
+    describe('When we instantiatte it', () => {
+        test('then it should be defined', () => {
+            expect(controller).toBeDefined()
+        });
+        test('Then it should be an instance of ProductsController', () => {
+            expect(controller).toBeInstanceOf(ProductsController);
+        });
+    });
     });
     describe('', () => {
         test('', () => {});
